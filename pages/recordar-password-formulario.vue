@@ -42,6 +42,7 @@ export default {
   },
 
   mounted() {
+    this.setIsContainerNeeded(true)
     (this.$router.currentRoute.query.token) ? this.forgotData.token = this.$router.currentRoute.query.token : this.$router.push('/login')
   },
 
@@ -53,6 +54,7 @@ export default {
     },
 
     ...mapActions({
+      setIsContainerNeeded: 'global/setIsContainerNeeded',
       setServerMessage: 'serverMessage/setServerMessage',
     }),
   }

@@ -37,6 +37,10 @@ export default {
     }
   },
 
+  mounted() {
+    this.setIsContainerNeeded(true)
+  },
+
   methods: {
     forgot(){
       this.$axios.post('/api/forgotSendResetLinkEmail', this.forgotData)
@@ -45,6 +49,7 @@ export default {
     },
 
     ...mapActions({
+      setIsContainerNeeded: 'global/setIsContainerNeeded',
       setServerMessage: 'serverMessage/setServerMessage',
     }),
   }

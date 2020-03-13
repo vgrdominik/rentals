@@ -5,11 +5,11 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'Videojuego Radge',
+    title: 'Rentals',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Manager para reservar tareas.' }
+      { hid: 'description', name: 'description', content: 'Alquiler de material.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -28,7 +28,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@plugins/global.js'
+    '@plugins/global.js',
+    '@plugins/particles.js',
   ],
   /*
   ** Nuxt.js dev-modules

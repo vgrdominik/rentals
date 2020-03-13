@@ -51,6 +51,10 @@ export default {
     }
   },
 
+  mounted() {
+    this.setIsContainerNeeded(true)
+  },
+
   methods: {
     afterLogin(response){
       this.setToken(response.data.token)
@@ -65,6 +69,7 @@ export default {
     },
 
     ...mapActions({
+      setIsContainerNeeded: 'global/setIsContainerNeeded',
       setToken: 'user/setToken',
       fetchUser: 'user/fetchUser',
       setServerMessage: 'serverMessage/setServerMessage',

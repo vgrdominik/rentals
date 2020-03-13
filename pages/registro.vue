@@ -45,6 +45,10 @@ export default {
     }
   },
 
+  mounted() {
+    this.setIsContainerNeeded(true)
+  },
+
   methods: {
     signUp(){
       this.$axios.post('/api/register', this.signUpData)
@@ -52,6 +56,7 @@ export default {
     },
 
     ...mapActions({
+      setIsContainerNeeded: 'global/setIsContainerNeeded',
       setServerMessage: 'serverMessage/setServerMessage',
     }),
   }

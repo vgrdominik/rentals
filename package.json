@@ -1,7 +1,7 @@
 {
-  "name": "radge",
+  "name": "rentals",
   "version": "0.0.1",
-  "description": "Videojuego radge.",
+  "description": "Rentals.",
   "author": "iamvalentigamez",
   "private": true,
   "scripts": {
@@ -25,6 +25,7 @@
     "@nuxtjs/vuetify": "^1.11.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "vue-particles": "^1.0.9"
   }
 }

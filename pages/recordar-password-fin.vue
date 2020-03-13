@@ -19,6 +19,18 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
+
+  mounted() {
+    this.setIsContainerNeeded(true)
+  },
+
+  methods: {
+    ...mapActions({
+      setIsContainerNeeded: 'global/setIsContainerNeeded',
+    }),
+  },
 }
 </script>

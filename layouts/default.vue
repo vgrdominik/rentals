@@ -70,25 +70,15 @@
       dark
       color="primary"
     >
-      <CtBtn type="icon" :icon="['fas', 'chevron-left']" @click="$router.go(-1)" class="mr-3" />
-
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title
         style="width: 300px"
         class="ml-0 pl-4"
       >
-        <CtBtn type="text" color="white" to="/">Videojuego Radge</CtBtn>
+        <CtBtn type="text" color="white" to="/">Rentals</CtBtn>
       </v-toolbar-title>
       <v-spacer />
 
-      <CtBtn type="text" color="white" href="https://valentigamez.com">
-        Sobre mi
-      </CtBtn>
-      |
-      <CtBtn type="text" color="white" href="http://blog.valentigamez.com">
-        Blog
-      </CtBtn>
-      |
       <template v-if="user">
         <CtBtn type="text" color="white" @click="logout()">
           Salir
@@ -100,15 +90,19 @@
         </CtBtn>
         |
         <CtBtn type="text" color="white" to="/registro">
-          Registro gratuito
+          Registro
         </CtBtn>
       </template>
-      <CtBtn type="icon" :icon="['fas', 'bell']" to="/notificaciones" />
+      <template v-if="user">
+        <CtBtn type="icon" :icon="['fas', 'bell']" to="/notificaciones" />
+      </template>
     </v-app-bar>
     <v-content>
+      <nuxt v-if="! isContainerNeeded" />
       <v-container
         class="fill-height"
         fluid
+        v-else
       >
         <nuxt />
       </v-container>
@@ -121,14 +115,14 @@
         </v-card-text>
 
         <v-card-text class="white--text pt-0">
-          En la página se puede gestionar temas relacionados con el videojuego Radge.
+          Con rentals puedes hacer dinero alquilando tus cosas.
         </v-card-text>
 
         <v-divider></v-divider>
 
         <v-card-text class="white--text">
           <CtBtn type="text" href="https://www.ciclotic.com/sobre-ciclotic.php#condiciones" target="_blank" color="white">Condiciones</CtBtn>
-          <CtBtn type="text" href="https://valentigamez.com" target="_blank" color="white">{{ new Date().getFullYear() }} — Valentí Gàmez</CtBtn>
+          <CtBtn type="text" href="https://valentigamez.com" target="_blank" color="white">{{ new Date().getFullYear() }} — Rentals</CtBtn>
         </v-card-text>
       </CtCard>
     </v-footer>
@@ -145,9 +139,15 @@ export default {
 
   data: () => ({
     dialog: false,
-    drawer: null,
+    drawer: false,
     items: [
-      { icon: ['fas', 'asterisk'], text: 'Día a día', path: '/dia-a-dia' },
+      { icon: ['fas', 'asterisk'], text: 'Inicio', path: '/' },
+      { icon: ['fas', 'asterisk'], text: 'Categoría blog 1', path: '/categoria-1' },
+      { icon: ['fas', 'asterisk'], text: 'Categoría blog 2', path: '/categoria-2' },
+      { icon: ['fas', 'asterisk'], text: 'Cómo funciona', path: '/como-funciona' },
+      { icon: ['fas', 'asterisk'], text: 'Preguntas frequentes', path: '/faq' },
+      { icon: ['fas', 'asterisk'], text: 'Blog', path: '/blog' },
+      { icon: ['fas', 'asterisk'], text: 'Contacto', path: '/contacto' },
     ],
     footerItems: [
       {
@@ -179,9 +179,13 @@ export default {
   }),
 
   computed: {
+    isContainerNeeded () {
+      return this.$store.state.global.is_container_needed
+    },
+
     user () {
       return this.$store.state.user.user
-    }
+    },
   },
 
   methods: {

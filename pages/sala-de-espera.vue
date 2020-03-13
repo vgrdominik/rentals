@@ -21,9 +21,19 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   mounted() {
+    this.setIsContainerNeeded(true)
     setTimeout(() => this.$router.push({ path: '/emprendimiento' }), 3000)
+  },
+
+  methods: {
+
+    ...mapActions({
+      setIsContainerNeeded: 'global/setIsContainerNeeded',
+      setServerMessage: 'serverMessage/setServerMessage',
+    }),
   }
 }
 </script>

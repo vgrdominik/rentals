@@ -33,6 +33,7 @@ export default {
   },
 
   mounted() {
+    this.setIsContainerNeeded(true)
     this.fetch()
   },
 
@@ -44,6 +45,7 @@ export default {
     },
 
     ...mapActions({
+      setIsContainerNeeded: 'global/setIsContainerNeeded',
       setServerMessage: 'serverMessage/setServerMessage',
     }),
   }
